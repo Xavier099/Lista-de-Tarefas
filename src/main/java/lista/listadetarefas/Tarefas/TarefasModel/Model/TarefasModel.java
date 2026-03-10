@@ -29,6 +29,9 @@ public class TarefasModel {
     @Column (name = "nivel_importancia")
     private String nivelImportancia;
 
+    @Column (name = "status")
+    private boolean status;
+
     @OneToMany
     @JsonIgnore
     private List<UserModel> user;

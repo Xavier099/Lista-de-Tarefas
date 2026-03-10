@@ -35,7 +35,22 @@ public class UserService {
     }
 
     public UserDTO userCreate(UserDTO userDTO){
+        UserModel user = userMapper.map(userDTO);
+        user = userRepository.save(user);
+        return userMapper.map(user);
+    }
 
+    public UserDTO updataUser(Long id, UserDTO userDTO){
+        UserModel user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario nao encontrado"));
+
+        if (userDTO.getNome() != null) user.setNome(userDTO.getNome());
+        if (userDTO.getTelefone() != null) user.setTelefone(userDTO.getTelefone());
+        if (userDTO.getEmail() != null) user.setEmail(userDTO.getEmail());
+        if (userDTO.getTarefas() != null) user.setTarefas(userDTO.getTarefas());
+
+        UserModel saved = userRepository.save(user);
+        return new UserDTO(saved);
     }
 
     public void deletar(Long id){

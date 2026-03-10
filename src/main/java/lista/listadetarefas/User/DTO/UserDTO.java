@@ -1,6 +1,7 @@
 package lista.listadetarefas.User.DTO;
 
 import lista.listadetarefas.Tarefas.TarefasModel.Model.TarefasModel;
+import lista.listadetarefas.User.Model.UserModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,6 @@ public class UserDTO {
     private String email;
     private TarefasModel tarefas;
 
+    public UserDTO(UserModel saved) {
+    }
 }
